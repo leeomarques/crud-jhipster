@@ -1,0 +1,9 @@
+{
+  "generator-jhipster:7.8.1": {
+    "promptValues": {
+      "packageName": "com.minicurso.entregas",
+      "nativeLanguage": "pt-br",
+      "microservicePath": "C:\\Users\\Leonardo Marques\\Documents\\Projeto\\Service"
+    }
+  }
+}

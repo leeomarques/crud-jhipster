@@ -1,0 +1,43 @@
+{
+  "changelogDate": "20220519212636",
+  "clientRootFolder": "minicurso",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "3"
+    },
+    {
+      "fieldName": "foto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dtNascimento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "cpf",
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "([0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2})"
+    },
+    {
+      "fieldName": "ativo",
+      "fieldType": "SimNao",
+      "fieldValues": "SIM,NAO"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "minicurso",
+  "microservicePath": "C:\\Users\\Leonardo Marques\\Documents\\Projeto\\Service",
+  "name": "Pessoa",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

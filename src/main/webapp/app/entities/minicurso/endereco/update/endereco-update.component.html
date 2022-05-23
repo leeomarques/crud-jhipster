@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-endereco-heading"
+        data-cy="EnderecoCreateUpdateHeading"
+        jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.home.createOrEditLabel"
+      >
+        Create or edit a Endereco
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.rua" for="field_rua">Rua</label>
+          <input type="text" class="form-control" name="rua" id="field_rua" data-cy="rua" formControlName="rua" />
+          <div *ngIf="editForm.get('rua')!.invalid && (editForm.get('rua')!.dirty || editForm.get('rua')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('rua')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.cidade" for="field_cidade">Cidade</label>
+          <input type="text" class="form-control" name="cidade" id="field_cidade" data-cy="cidade" formControlName="cidade" />
+          <div *ngIf="editForm.get('cidade')!.invalid && (editForm.get('cidade')!.dirty || editForm.get('cidade')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('cidade')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.bairro" for="field_bairro">Bairro</label>
+          <input type="text" class="form-control" name="bairro" id="field_bairro" data-cy="bairro" formControlName="bairro" />
+          <div *ngIf="editForm.get('bairro')!.invalid && (editForm.get('bairro')!.dirty || editForm.get('bairro')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('bairro')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.pessoa" for="field_pessoa">Pessoa</label>
+          <select class="form-control" id="field_pessoa" data-cy="pessoa" name="pessoa" formControlName="pessoa">
+            <option *ngIf="!editForm.get('pessoa')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="pessoaOption.id === editForm.get('pessoa')!.value?.id ? editForm.get('pessoa')!.value : pessoaOption"
+              *ngFor="let pessoaOption of pessoasSharedCollection; trackBy: trackPessoaById"
+            >
+              {{ pessoaOption.nome }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['pessoa'])!.invalid && (editForm.get(['pessoa'])!.dirty || editForm.get(['pessoa'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['pessoa'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

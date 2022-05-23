@@ -1,0 +1,46 @@
+{
+  "changelogDate": "20220520034330",
+  "clientRootFolder": "minicurso",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "entregue",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dtEntrega",
+      "fieldType": "Instant"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "minicurso",
+  "microservicePath": "C:\\Users\\Leonardo Marques\\Documents\\Projeto\\Service",
+  "name": "Pedido",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "pessoa",
+      "relationshipName": "pessoa",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    },
+    {
+      "otherEntityField": "cidade",
+      "otherEntityName": "endereco",
+      "relationshipName": "endereco",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    },
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "produto",
+      "relationshipName": "produto",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
+    }
+  ],
+  "service": "serviceImpl"
+}

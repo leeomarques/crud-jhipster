@@ -1,0 +1,32 @@
+{
+  "gatewayMiniCursoApp": {
+    "minicursoPedido": {
+      "home": {
+        "title": "Pedidos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Pedido",
+        "createOrEditLabel": "Create or edit a Pedido",
+        "notFound": "No Pedidos found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Pedido {{ id }}?"
+      },
+      "detail": {
+        "title": "Pedido"
+      },
+      "id": "ID",
+      "entregue": "Entregue",
+      "dtEntrega": "Dt Entrega",
+      "pessoa": "Pessoa",
+      "endereco": "Endereco",
+      "produto": "Produto"
+    }
+  },
+  "minicursoApp": {
+    "minicursoPedido": {
+      "created": "A new Pedido is created with identifier {{ param }}",
+      "updated": "A Pedido is updated with identifier {{ param }}",
+      "deleted": "A Pedido is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gatewayMiniCursoApp": {
+    "minicursoEndereco": {
+      "home": {
+        "title": "Enderecos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Endereco",
+        "createOrEditLabel": "Criar ou editar Endereco",
+        "notFound": "Nenhum Endereco encontrado"
+      },
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Endereco {{ id }}?"
+      },
+      "detail": {
+        "title": "Endereco"
+      },
+      "id": "ID",
+      "rua": "Rua",
+      "cidade": "Cidade",
+      "bairro": "Bairro",
+      "pessoa": "Pessoa"
+    }
+  },
+  "minicursoApp": {
+    "minicursoEndereco": {
+      "created": "Um novo Endereco foi criado com o identificador {{ param }}",
+      "updated": "Um Endereco foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Endereco foi excluído com o identificador {{ param }}"
+    }
+  }
+}

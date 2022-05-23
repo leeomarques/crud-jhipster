@@ -1,0 +1,120 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-pedido-heading"
+        data-cy="PedidoCreateUpdateHeading"
+        jhiTranslate="gatewayMiniCursoApp.minicursoPedido.home.createOrEditLabel"
+      >
+        Create or edit a Pedido
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gatewayMiniCursoApp.minicursoPedido.entregue" for="field_entregue">Entregue</label>
+          <input type="checkbox" class="form-check" name="entregue" id="field_entregue" data-cy="entregue" formControlName="entregue" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gatewayMiniCursoApp.minicursoPedido.dtEntrega" for="field_dtEntrega">Dt Entrega</label>
+          <div class="d-flex">
+            <input
+              id="field_dtEntrega"
+              data-cy="dtEntrega"
+              type="datetime-local"
+              class="form-control"
+              name="dtEntrega"
+              formControlName="dtEntrega"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gatewayMiniCursoApp.minicursoPedido.pessoa" for="field_pessoa">Pessoa</label>
+          <select class="form-control" id="field_pessoa" data-cy="pessoa" name="pessoa" formControlName="pessoa">
+            <option *ngIf="!editForm.get('pessoa')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="pessoaOption.id === editForm.get('pessoa')!.value?.id ? editForm.get('pessoa')!.value : pessoaOption"
+              *ngFor="let pessoaOption of pessoasSharedCollection; trackBy: trackPessoaById"
+            >
+              {{ pessoaOption.nome }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['pessoa'])!.invalid && (editForm.get(['pessoa'])!.dirty || editForm.get(['pessoa'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['pessoa'])?.errors?.required" jhiTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gatewayMiniCursoApp.minicursoPedido.endereco" for="field_endereco">Endereco</label>
+          <select class="form-control" id="field_endereco" data-cy="endereco" name="endereco" formControlName="endereco">
+            <option *ngIf="!editForm.get('endereco')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="enderecoOption.id === editForm.get('endereco')!.value?.id ? editForm.get('endereco')!.value : enderecoOption"
+              *ngFor="let enderecoOption of enderecosSharedCollection; trackBy: trackEnderecoById"
+            >
+              {{ enderecoOption.cidade }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['endereco'])!.invalid && (editForm.get(['endereco'])!.dirty || editForm.get(['endereco'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['endereco'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gatewayMiniCursoApp.minicursoPedido.produto" for="field_produto">Produto</label>
+          <select class="form-control" id="field_produto" data-cy="produto" name="produto" formControlName="produto">
+            <option *ngIf="!editForm.get('produto')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="produtoOption.id === editForm.get('produto')!.value?.id ? editForm.get('produto')!.value : produtoOption"
+              *ngFor="let produtoOption of produtosSharedCollection; trackBy: trackProdutoById"
+            >
+              {{ produtoOption.descricao }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['produto'])!.invalid && (editForm.get(['produto'])!.dirty || editForm.get(['produto'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['produto'])?.errors?.required"
+            jhiTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

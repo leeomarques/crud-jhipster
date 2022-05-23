@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pessoa">
+      <h2 data-cy="pessoaDetailsHeading"><span jhiTranslate="gatewayMiniCursoApp.minicursoPessoa.detail.title">Pessoa</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ pessoa.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayMiniCursoApp.minicursoPessoa.nome">Nome</span></dt>
+        <dd>
+          <span>{{ pessoa.nome }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayMiniCursoApp.minicursoPessoa.foto">Foto</span></dt>
+        <dd>
+          <div *ngIf="pessoa.foto">
+            <a (click)="openFile(pessoa.foto, pessoa.fotoContentType)">
+              <img [src]="'data:' + pessoa.fotoContentType + ';base64,' + pessoa.foto" style="max-width: 100%" alt="pessoa image" />
+            </a>
+            {{ pessoa.fotoContentType }}, {{ byteSize(pessoa.foto) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayMiniCursoApp.minicursoPessoa.dtNascimento">Dt Nascimento</span></dt>
+        <dd>
+          <span>{{ pessoa.dtNascimento | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayMiniCursoApp.minicursoPessoa.cpf">Cpf</span></dt>
+        <dd>
+          <span>{{ pessoa.cpf }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayMiniCursoApp.minicursoPessoa.ativo">Ativo</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gatewayMiniCursoApp.SimNao.' + pessoa.ativo }}">{{ pessoa.ativo }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/pessoa', pessoa.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

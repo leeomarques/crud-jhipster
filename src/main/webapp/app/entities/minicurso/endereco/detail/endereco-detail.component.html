@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="endereco">
+      <h2 data-cy="enderecoDetailsHeading"><span jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.detail.title">Endereco</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ endereco.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.rua">Rua</span></dt>
+        <dd>
+          <span>{{ endereco.rua }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.cidade">Cidade</span></dt>
+        <dd>
+          <span>{{ endereco.cidade }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.bairro">Bairro</span></dt>
+        <dd>
+          <span>{{ endereco.bairro }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayMiniCursoApp.minicursoEndereco.pessoa">Pessoa</span></dt>
+        <dd>
+          <div *ngIf="endereco.pessoa">
+            <a [routerLink]="['/pessoa', endereco.pessoa?.id, 'view']">{{ endereco.pessoa?.nome }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/endereco', endereco.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

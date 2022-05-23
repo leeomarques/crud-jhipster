@@ -1,0 +1,9 @@
+{
+  "gatewayMiniCursoApp": {
+    "SimNao": {
+      "null": "",
+      "SIM": "SIM",
+      "NAO": "NAO"
+    }
+  }
+}
